@@ -4,11 +4,13 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
+	"github.com/PuerkitoBio/goquery"
 	"github.com/astaxie/beego"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -26,6 +28,8 @@ type MainController struct {
 
 func (c *MainController) Get() {
 	staticPath := beego.AppConfig.String("static_path")
+	concatCss := beego.AppConfig.String("concat_css") == "on"
+	beego.Info(concatCss)
 	expDate := string(c.Ctx.Request.Header.Get("EXPDATE"))
 	useOldPage := false
 	if expDate == "" {
@@ -71,16 +75,36 @@ func (c *MainController) Get() {
 	}
 	if useOldPage {
 		fmt.Println("go create new")
-		go GetResponseBodyText(abPath, fullUrl)
+		go GetResponseBodyText(abPath, fullUrl, concatCss)
 	} else {
 		fmt.Println("create new")
-		bodyText := GetResponseBodyText(abPath, fullUrl)
+		bodyText := GetResponseBodyText(abPath, fullUrl, concatCss)
 		c.Ctx.WriteString(bodyText)
 	}
 	md5S = RemoveFromSlice(md5S, cipherStr)
 }
 
-func GetResponseBodyText(abPath string, fullUrl string) string {
+func GetResponseBodyText(abPath string, fullUrl string, concatCss bool) string {
+	var html string
+	if concatCss {
+		html = GetHtmlConcatCss(fullUrl)
+	} else {
+		html = GetHtml(fullUrl)
+	}
+	os.Remove(abPath)
+	newFile, errCreateFile := os.Create(abPath)
+	if errCreateFile != nil {
+		beego.Info(errCreateFile)
+	}
+	n, errWriterFile := io.WriteString(newFile, html)
+	if errWriterFile != nil {
+		beego.Info(errCreateFile)
+	}
+	beego.Info("写入文件：" + abPath + "    " + strconv.Itoa(n) + "字节")
+	return html
+}
+
+func GetHtml(fullUrl string) string {
 	resp, err := http.Get(fullUrl)
 	if err != nil || resp.StatusCode != 200 {
 		fmt.Println("error page")
@@ -92,19 +116,35 @@ func GetResponseBodyText(abPath string, fullUrl string) string {
 		fmt.Println("body parse error")
 		return ""
 	}
-	os.Remove(abPath)
-	newFile, errCreateFile := os.Create(abPath)
-	if errCreateFile != nil {
-		beego.Info(errCreateFile)
-	}
-	n, errWriterFile := io.WriteString(newFile, string(body))
-	if errWriterFile != nil {
-		beego.Info(errCreateFile)
-	}
-	beego.Info("写入文件：" + abPath + "    " + strconv.Itoa(n) + "字节")
 	return string(body)
 }
-
+func GetHtmlConcatCss(fullUrl string) string {
+	doc, err := goquery.NewDocument(fullUrl)
+	if err != nil {
+		fmt.Println(err)
+	}
+	cssUrls := []string{}
+	doc.Find("link[rel=stylesheet]").Each(func(i int, node *goquery.Selection) {
+		cssUrl, _ := node.Attr("href")
+		if cssUrl != "" {
+			cssUrls = append(cssUrls, cssUrl)
+		}
+		node.Remove()
+	})
+	cssAll := ""
+	for _, v := range cssUrls {
+		resp, _ := http.Get(v)
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
+		cssAll = cssAll + "\r\n" + string(body)
+		fmt.Println(v)
+	}
+	doc.Find("title").AfterHtml("\r\n<style>" + cssAll + "</style>\r\n")
+	html, _ := doc.Html()
+	re, _ := regexp.Compile("\\/\\*.*\\*\\/")
+	html = re.ReplaceAllString(html, "")
+	return html
+}
 func IsExist(filename string) bool {
 	_, err := os.Stat(filename)
 	return err == nil || os.IsExist(err)
