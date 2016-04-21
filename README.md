@@ -9,9 +9,14 @@
 
 `max_expdate` 是静态文件的过期时间（默认过期时间） 
 
+`concat_css` 可选on/off,该选项将开启将会把页面中直接引用的css直接加入页面中，以减少请求次数
+
 *关于过期时间，不同的访问路径可以通过Header的EXPDATE设置
 
 　　以nginx为例<br/>
 　　在location中添加 proxy_set_header EXPDATE 30;<br/> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*注意此处时间只能以分钟为单位
+
+*如果页面在开发或测试时，可以在浏览器的url后拼接
+`nocache=true`，该url则不会使用缓存
 
