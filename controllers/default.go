@@ -22,15 +22,26 @@ type MainController struct {
 }
 
 func (c *MainController) Get() {
+	url := c.Ctx.Request.URL.String()
+	/* 配置文件中的域名 */
+	domain := config.Basic.AppDomain
+	/* 完整url路径 */
+	fullUrl := domain + url
+	/* 参数中携带nocache=true时，不使用缓存，建议只在测试时使用*/
+	nocache := c.GetString("nocache")
+	if nocache == "true" {
+		fmt.Println("nocache=true")
+		c.Ctx.WriteString(service.GetHtml(fullUrl))
+		return
+	}
+	/* 过期时间 */
 	expDate := string(c.Ctx.Request.Header.Get("EXPDATE"))
 	if expDate == "" {
 		expDate = config.Basic.MaxExpdate
 	}
 	expDateInt, _ := strconv.Atoi(expDate)
 	expDateInt64 := int64(expDateInt)
-	url := c.Ctx.Request.URL.String()
-	domain := config.Basic.AppDomain
-	fullUrl := domain + url
+
 	if strings.HasSuffix(domain, "/") {
 		domain = domain[0 : len(domain)-1]
 	}
@@ -39,6 +50,7 @@ func (c *MainController) Get() {
 	var abPath string
 	var html string
 	var timeDifference int64
+	/* 获取静态文件并返回 */
 	if config.Basic.Storage == "text" {
 		html, timeDifference, abPath = service.GetHtmlText(cipherStr)
 		if html != "" {
@@ -52,15 +64,19 @@ func (c *MainController) Get() {
 			c.Ctx.WriteString(html)
 		}
 	}
+	/* 如果静态文件的存储日期没有超出设置时间，则直接返回，否则继续存储*/
 	if html != "" && timeDifference < expDateInt64 || ContainsBySlice(md5S, cipherStr) {
 		return
 	}
+	/* 如果没有旧页面，并且已经有人访问过当前页面则阻止继续往下执行，并重复刷新访问者的浏览器 */
 	if !useOldPage && ContainsBySlice(md5S, cipherStr) {
 		c.Ctx.WriteString("<script>setTimeout('location.reload()',500)</script>")
 		return
 	}
 	md5S = append(md5S, cipherStr)
 
+	/* 如果之前已经存在静态页面，则静态页面应该返回给用户，此处不应该阻塞页面响应，所以此处使用异步加载html页面 */
+	/* 如果页面没有静态页面则等待静态文件生成完成，并将http响应的页面返回给用户 */
 	if "text" == config.Basic.Storage {
 		if useOldPage {
 			fmt.Println("go create new")
