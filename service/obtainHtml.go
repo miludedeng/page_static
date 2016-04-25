@@ -37,11 +37,13 @@ func GetHtmlConcatCss(fullUrl string) string {
 	})
 	cssAll := ""
 	for _, v := range cssUrls {
-		resp, _ := http.Get(v)
+		resp, err := http.Get(v)
+		if err != nil {
+			continue
+		}
 		defer resp.Body.Close()
 		body, _ := ioutil.ReadAll(resp.Body)
 		cssAll = cssAll + "\r\n" + string(body)
-		fmt.Println(v)
 	}
 	doc.Find("title").AfterHtml("\r\n<style>" + cssAll + "</style>\r\n")
 	html, _ := doc.Html()

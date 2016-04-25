@@ -25,6 +25,9 @@ func (c *MainController) Get() {
 	url := c.Ctx.Request.URL.String()
 	/* 配置文件中的域名 */
 	domain := config.Basic.AppDomain
+	if strings.HasSuffix(domain, "/") {
+		domain = domain[0 : len(domain)-1]
+	}
 	/* 完整url路径 */
 	fullUrl := domain + url
 	/* 参数中携带nocache=true时，不使用缓存，建议只在测试时使用*/
@@ -42,9 +45,6 @@ func (c *MainController) Get() {
 	expDateInt, _ := strconv.Atoi(expDate)
 	expDateInt64 := int64(expDateInt)
 
-	if strings.HasSuffix(domain, "/") {
-		domain = domain[0 : len(domain)-1]
-	}
 	cipherStr := EncodeUrl(url)
 	useOldPage := false
 	var abPath string
@@ -65,7 +65,7 @@ func (c *MainController) Get() {
 		}
 	}
 	/* 如果静态文件的存储日期没有超出设置时间，则直接返回，否则继续存储*/
-	if html != "" && timeDifference < expDateInt64 || ContainsBySlice(md5S, cipherStr) {
+	if html != "" && (timeDifference < expDateInt64 || ContainsBySlice(md5S, cipherStr)) {
 		return
 	}
 	/* 如果没有旧页面，并且已经有人访问过当前页面则阻止继续往下执行，并重复刷新访问者的浏览器 */
@@ -74,7 +74,6 @@ func (c *MainController) Get() {
 		return
 	}
 	md5S = append(md5S, cipherStr)
-
 	/* 如果之前已经存在静态页面，则静态页面应该返回给用户，此处不应该阻塞页面响应，所以此处使用异步加载html页面 */
 	/* 如果页面没有静态页面则等待静态文件生成完成，并将http响应的页面返回给用户 */
 	if "text" == config.Basic.Storage {
