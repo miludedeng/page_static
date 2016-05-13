@@ -1,12 +1,10 @@
 package controllers
 
 import (
-	"crypto/md5"
-	"encoding/hex"
-	"fmt"
 	"github.com/astaxie/beego"
 	"page_static/config"
 	"page_static/service"
+	"page_static/util"
 	"strconv"
 	"strings"
 )
@@ -33,7 +31,7 @@ func (c *MainController) Get() {
 	/* 参数中携带nocache=true时，不使用缓存，建议只在测试时使用*/
 	nocache := c.GetString("nocache")
 	if nocache == "true" {
-		fmt.Println("nocache=true")
+		beego.Info("nocache=true")
 		c.Ctx.WriteString(service.GetHtml(fullUrl))
 		return
 	}
@@ -45,7 +43,7 @@ func (c *MainController) Get() {
 	expDateInt, _ := strconv.Atoi(expDate)
 	expDateInt64 := int64(expDateInt)
 
-	cipherStr := EncodeUrl(url)
+	cipherStr := util.EncodeUrl(url)
 	useOldPage := false
 	var abPath string
 	var html string
@@ -65,11 +63,11 @@ func (c *MainController) Get() {
 		}
 	}
 	/* 如果静态文件的存储日期没有超出设置时间，则直接返回，否则继续存储*/
-	if html != "" && (timeDifference < expDateInt64 || ContainsBySlice(md5S, cipherStr)) {
+	if html != "" && (timeDifference < expDateInt64 || util.ContainsBySlice(md5S, cipherStr)) {
 		return
 	}
 	/* 如果没有旧页面，并且已经有人访问过当前页面则阻止继续往下执行，并重复刷新访问者的浏览器 */
-	if !useOldPage && ContainsBySlice(md5S, cipherStr) {
+	if !useOldPage && util.ContainsBySlice(md5S, cipherStr) {
 		c.Ctx.WriteString("<script>setTimeout('location.reload()',500)</script>")
 		return
 	}
@@ -78,51 +76,23 @@ func (c *MainController) Get() {
 	/* 如果页面没有静态页面则等待静态文件生成完成，并将http响应的页面返回给用户 */
 	if "text" == config.Basic.Storage {
 		if useOldPage {
-			fmt.Println("go create new")
+			beego.Info("go create new")
 			go service.GetHtmlAndSaveText(abPath, fullUrl, config.Basic.ConcatCss == "on")
 		} else {
-			fmt.Println("create new")
+			beego.Info("create new")
 			bodyText := service.GetHtmlAndSaveText(abPath, fullUrl, config.Basic.ConcatCss == "on")
 			c.Ctx.WriteString(bodyText)
 		}
 	} else {
 		if useOldPage {
-			fmt.Println("go create new")
+			beego.Info("go create new")
 			go service.GetHtmlAndSaveRedis(cipherStr, fullUrl, config.Basic.ConcatCss == "on")
 		} else {
-			fmt.Println("create new")
+			beego.Info("create new")
 			bodyText := service.GetHtmlAndSaveRedis(cipherStr, fullUrl, config.Basic.ConcatCss == "on")
 			c.Ctx.WriteString(bodyText)
 		}
 	}
-	md5S = RemoveFromSlice(md5S, cipherStr)
-}
-
-func ContainsBySlice(md5S []string, s string) bool {
-	for _, v := range md5S {
-		if v == s {
-			return true
-		}
-	}
-	return false
-}
-
-func RemoveFromSlice(s []string, e string) []string {
-	indexS := []int{}
-	for i, v := range s {
-		if v == e {
-			indexS = append(indexS, i)
-		}
-	}
-	for _, v := range indexS {
-		s = append(s[:v], s[v+1:]...)
-	}
-	return s
-}
-
-func EncodeUrl(url string) string {
-	md5Ctx := md5.New()
-	md5Ctx.Write([]byte(string(url)))
-	cipherEncode := md5Ctx.Sum(nil)
-	return hex.EncodeToString(cipherEncode)
+	beego.Info("staticize:", fullUrl, "  ###  ", cipherStr)
+	md5S = util.RemoveFromSlice(md5S, cipherStr)
 }
