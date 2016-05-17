@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Page static : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Page static</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/miludedeng/page_static">View on GitHub</a>
+
+          <h1 id="project_title">Page static</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/miludedeng/page_static/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/miludedeng/page_static/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a id="页面静态化中间件" class="anchor" href="#%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%AD%E9%97%B4%E4%BB%B6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>页面静态化中间件</h2>
+
+<hr>
+
+<p>可应用于动态动态服务器与代理服务器之间，经过此插件可将页面静态化，如果已存在静态页面，则直接返回。如果没有，则会生成静态页面并返回</p>
+
+<h4>
+<a id="使用说明" class="anchor" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用说明:</h4>
+
+<h6>
+<a id="设置confappconf" class="anchor" href="#%E8%AE%BE%E7%BD%AEconfappconf" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>设置conf/app.conf</h6>
+
+<p>[basic]</p>
+
+<p><code>runmode</code> 可选dev/prod，既开发模式和生产模式</p>
+
+<p><code>httpport</code> 端口</p>
+
+<p><code>app_domain</code> = 是动态服务器的域名或ip</p>
+
+<p><code>max_expdate</code> 是静态文件的过期时间（默认过期时间）</p>
+
+<p><code>concat_css</code> 可选on/off,该选项将开启将会把页面中直接引用的css直接加入页面中，以减少请求次数</p>
+
+<p><code>storage</code> 静态文件存储方式，支持text(文本文件)和redis两种方式可选</p>
+
+<p>[text]</p>
+
+<p><code>static_path</code> 是静态文件存放的路径</p>
+
+<p>[redis]</p>
+
+<p><code>addr</code> redis服务的地址</p>
+
+<p><code>port</code> redis服务的端口</p>
+
+<p>*关于过期时间，不同的访问路径可以通过Header的EXPDATE设置</p>
+
+<p>　　以nginx为例<br>
+　　在location中添加 proxy_set_header EXPDATE 30;<br> 
+        *注意此处时间只能以分钟为单位</p>
+
+<p>*如果页面在开发或测试时，可以在浏览器的url后拼接
+<code>nocache=true</code>，该url则不会使用缓存</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Page static maintained by <a href="https://github.com/miludedeng">miludedeng</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

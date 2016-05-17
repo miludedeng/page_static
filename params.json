@@ -1,0 +1,6 @@
+{
+  "name": "Page static",
+  "tagline": "",
+  "body": "##页面静态化中间件\r\n-------\r\n可应用于动态动态服务器与代理服务器之间，经过此插件可将页面静态化，如果已存在静态页面，则直接返回。如果没有，则会生成静态页面并返回\r\n####使用说明:\r\n######设置conf/app.conf\r\n[basic]\r\n\r\n`runmode` 可选dev/prod，既开发模式和生产模式\r\n\r\n`httpport` 端口\r\n\r\n`app_domain` = 是动态服务器的域名或ip\r\n\r\n`max_expdate` 是静态文件的过期时间（默认过期时间）\r\n\r\n`concat_css` 可选on/off,该选项将开启将会把页面中直接引用的css直接加入页面中，以减少请求次数\r\n\r\n`storage` 静态文件存储方式，支持text(文本文件)和redis两种方式可选\r\n\r\n\r\n[text]\r\n\r\n`static_path` 是静态文件存放的路径\r\n\r\n[redis]\r\n\r\n`addr` redis服务的地址\r\n\r\n`port` redis服务的端口\r\n\r\n*关于过期时间，不同的访问路径可以通过Header的EXPDATE设置\r\n\r\n　　以nginx为例<br/>\r\n　　在location中添加 proxy_set_header EXPDATE 30;<br/> \r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*注意此处时间只能以分钟为单位\r\n\r\n*如果页面在开发或测试时，可以在浏览器的url后拼接\r\n`nocache=true`，该url则不会使用缓存",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
