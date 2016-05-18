@@ -1,0 +1,208 @@
+2016/05/18 11:58:53 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 11:58:55 [default.go:82][I] create new 
+2016/05/18 11:58:55 [text.go:55][I] 写入文件：/Users/steven/.mygo/src/page_static/static//6/6/6666cd76f96956469e7be39d750cc7d9.html    99669字节 
+2016/05/18 11:58:55 [default.go:96][I] staticize: http://www.baidu.com/   ###   6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 11:58:55 [router.go:829][D] | GET        | /                                        | 493.257547ms     | match      | /*                                       | 
+2016/05/18 11:58:57 [default.go:82][I] create new 
+2016/05/18 11:58:57 [text.go:55][I] 写入文件：/Users/steven/.mygo/src/page_static/static//1/0/10ea08a4ea3b809d5b6a7509f01b5735.html    302字节 
+2016/05/18 11:58:57 [default.go:96][I] staticize: http://www.baidu.com/content-search.xml   ###   10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 11:58:57 [router.go:829][D] | GET        | /content-search.xml                      | 9.69222ms        | match      | /*                                       | 
+2016/05/18 11:58:57 [staticfile.go:51][W] Can't find/open the file:  /favicon.ico file not find 
+2016/05/18 11:59:43 [router.go:829][D] | GET        | /                                        | 2.119337ms       | match      | /*                                       | 
+2016/05/18 11:59:43 [router.go:829][D] | GET        | /content-search.xml                      | 1.530082ms       | match      | /*                                       | 
+2016/05/18 12:02:57 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 12:03:06 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:06 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:06 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:06 [default.go:84][I] go create new 
+2016/05/18 12:03:06 [default.go:101][I] staticize: http://www.baidu.com/   ###   6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:06 [router.go:829][D] | GET        | /                                        | 1.911458ms       | match      | /*                                       | 
+2016/05/18 12:03:06 [text.go:55][I] 写入文件：/Users/steven/.mygo/src/page_static/static//6/6/6666cd76f96956469e7be39d750cc7d9.html    99676字节 
+2016/05/18 12:03:06 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:06 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:06 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:06 [default.go:84][I] go create new 
+2016/05/18 12:03:06 [default.go:101][I] staticize: http://www.baidu.com/content-search.xml   ###   10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:06 [router.go:829][D] | GET        | /content-search.xml                      | 1.205129ms       | match      | /*                                       | 
+2016/05/18 12:03:06 [text.go:55][I] 写入文件：/Users/steven/.mygo/src/page_static/static//1/0/10ea08a4ea3b809d5b6a7509f01b5735.html    302字节 
+2016/05/18 12:03:22 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:22 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:22 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:22 [router.go:829][D] | GET        | /                                        | 493.668µs        | match      | /*                                       | 
+2016/05/18 12:03:22 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:22 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:22 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:22 [router.go:829][D] | GET        | /content-search.xml                      | 124.854µs        | match      | /*                                       | 
+2016/05/18 12:03:25 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:25 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:25 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:25 [router.go:829][D] | GET        | /                                        | 1.41656ms        | match      | /*                                       | 
+2016/05/18 12:03:25 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:25 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:25 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:25 [router.go:829][D] | GET        | /content-search.xml                      | 144.734µs        | match      | /*                                       | 
+2016/05/18 12:03:27 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:27 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:27 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:27 [router.go:829][D] | GET        | /                                        | 324.978µs        | match      | /*                                       | 
+2016/05/18 12:03:27 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:27 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:27 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:27 [router.go:829][D] | GET        | /content-search.xml                      | 133.571µs        | match      | /*                                       | 
+2016/05/18 12:03:29 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:29 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:29 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:29 [router.go:829][D] | GET        | /                                        | 340.438µs        | match      | /*                                       | 
+2016/05/18 12:03:30 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:30 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:30 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:30 [router.go:829][D] | GET        | /content-search.xml                      | 128.162µs        | match      | /*                                       | 
+2016/05/18 12:03:32 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:32 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:32 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:32 [router.go:829][D] | GET        | /                                        | 275.604µs        | match      | /*                                       | 
+2016/05/18 12:03:32 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:32 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:32 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:32 [router.go:829][D] | GET        | /content-search.xml                      | 144.763µs        | match      | /*                                       | 
+2016/05/18 12:03:34 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:34 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:34 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:34 [router.go:829][D] | GET        | /                                        | 423.245µs        | match      | /*                                       | 
+2016/05/18 12:03:35 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:35 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:35 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:35 [router.go:829][D] | GET        | /content-search.xml                      | 164.512µs        | match      | /*                                       | 
+2016/05/18 12:03:37 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:37 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:37 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:37 [router.go:829][D] | GET        | /                                        | 441.013µs        | match      | /*                                       | 
+2016/05/18 12:03:37 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:37 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:37 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:37 [router.go:829][D] | GET        | /content-search.xml                      | 202.524µs        | match      | /*                                       | 
+2016/05/18 12:03:42 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:42 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:42 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:42 [router.go:829][D] | GET        | /                                        | 350.981µs        | match      | /*                                       | 
+2016/05/18 12:03:43 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:43 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:43 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:43 [router.go:829][D] | GET        | /content-search.xml                      | 149.466µs        | match      | /*                                       | 
+2016/05/18 12:03:45 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:45 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:45 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:45 [router.go:829][D] | GET        | /                                        | 690.23µs         | match      | /*                                       | 
+2016/05/18 12:03:45 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:45 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:45 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:45 [router.go:829][D] | GET        | /content-search.xml                      | 140.851µs        | match      | /*                                       | 
+2016/05/18 12:03:47 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:47 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:03:47 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:03:47 [router.go:829][D] | GET        | /                                        | 381.001µs        | match      | /*                                       | 
+2016/05/18 12:03:47 [default.go:66][I] Exist static file:  
+2016/05/18 12:03:47 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:03:47 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:03:47 [router.go:829][D] | GET        | /content-search.xml                      | 159.848µs        | match      | /*                                       | 
+2016/05/18 12:42:22 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 12:48:28 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 12:54:43 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 12:55:00 [text.go:30][I] File modify time is 2016-05-18 12:03:06 
+2016/05/18 12:55:00 [default.go:66][I] Exist static file:  
+2016/05/18 12:55:00 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:55:00 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:55:00 [default.go:84][I] go create new 
+2016/05/18 12:55:00 [default.go:101][I] staticize: http://www.baidu.com/   ###   6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:55:00 [router.go:829][D] | GET        | /                                        | 1.497105ms       | match      | /*                                       | 
+2016/05/18 12:55:01 [text.go:57][I] 写入文件：/Users/steven/.mygo/src/page_static/static//6/6/6666cd76f96956469e7be39d750cc7d9.html    99640字节 
+2016/05/18 12:55:01 [text.go:30][I] File modify time is 2016-05-18 12:03:07 
+2016/05/18 12:55:01 [default.go:66][I] Exist static file:  
+2016/05/18 12:55:01 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:55:01 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:55:01 [default.go:84][I] go create new 
+2016/05/18 12:55:01 [default.go:101][I] staticize: http://www.baidu.com/content-search.xml   ###   10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:55:01 [router.go:829][D] | GET        | /content-search.xml                      | 412.654µs        | match      | /*                                       | 
+2016/05/18 12:55:01 [text.go:57][I] 写入文件：/Users/steven/.mygo/src/page_static/static//1/0/10ea08a4ea3b809d5b6a7509f01b5735.html    302字节 
+2016/05/18 12:55:22 [text.go:30][I] File modify time is 2016-05-18 12:55:01 
+2016/05/18 12:55:22 [default.go:66][I] Exist static file:  
+2016/05/18 12:55:22 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:55:22 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:55:22 [router.go:829][D] | GET        | /                                        | 3.372918ms       | match      | /*                                       | 
+2016/05/18 12:55:23 [text.go:30][I] File modify time is 2016-05-18 12:55:01 
+2016/05/18 12:55:23 [default.go:66][I] Exist static file:  
+2016/05/18 12:55:23 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:55:23 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:55:23 [router.go:829][D] | GET        | /content-search.xml                      | 402.265µs        | match      | /*                                       | 
+2016/05/18 12:55:30 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 12:55:50 [text.go:30][I] File modify time is 2016-05-18 12:55:01 
+2016/05/18 12:55:50 [default.go:66][I] Exist static file:  
+2016/05/18 12:55:50 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:55:50 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:55:50 [router.go:829][D] | GET        | /                                        | 1.781625ms       | match      | /*                                       | 
+2016/05/18 12:55:51 [text.go:30][I] File modify time is 2016-05-18 12:55:01 
+2016/05/18 12:55:51 [default.go:66][I] Exist static file:  
+2016/05/18 12:55:51 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:55:51 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:55:51 [router.go:829][D] | GET        | /content-search.xml                      | 1.114837ms       | match      | /*                                       | 
+2016/05/18 12:56:23 [text.go:30][I] File modify time is 2016-05-18 12:55:01 
+2016/05/18 12:56:23 [default.go:66][I] Exist static file:  
+2016/05/18 12:56:23 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:56:23 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:56:23 [default.go:84][I] go create new 
+2016/05/18 12:56:23 [default.go:101][I] staticize: http://www.baidu.com/   ###   6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:56:23 [router.go:829][D] | GET        | /                                        | 4.733974ms       | match      | /*                                       | 
+2016/05/18 12:56:23 [text.go:57][I] 写入文件：/Users/steven/.mygo/src/page_static/static//6/6/6666cd76f96956469e7be39d750cc7d9.html    99898字节 
+2016/05/18 12:56:24 [text.go:30][I] File modify time is 2016-05-18 12:55:01 
+2016/05/18 12:56:24 [default.go:66][I] Exist static file:  
+2016/05/18 12:56:24 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:56:24 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:56:24 [default.go:84][I] go create new 
+2016/05/18 12:56:24 [default.go:101][I] staticize: http://www.baidu.com/content-search.xml   ###   10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:56:24 [router.go:829][D] | GET        | /content-search.xml                      | 1.329344ms       | match      | /*                                       | 
+2016/05/18 12:56:24 [text.go:57][I] 写入文件：/Users/steven/.mygo/src/page_static/static//1/0/10ea08a4ea3b809d5b6a7509f01b5735.html    302字节 
+2016/05/18 12:56:42 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 12:57:04 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 12:57:08 [redis.go:40][I] Cache modify time is 2016-05-13 10:26:07 
+2016/05/18 12:57:08 [default.go:66][I] Exist static file:  
+2016/05/18 12:57:08 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:57:08 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:57:08 [default.go:93][I] go create new 
+2016/05/18 12:57:08 [default.go:101][I] staticize: http://www.baidu.com/   ###   6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:57:08 [router.go:829][D] | GET        | /                                        | 2.841135ms       | match      | /*                                       | 
+2016/05/18 12:57:09 [redis.go:40][I] Cache modify time is 2016-05-13 10:26:07 
+2016/05/18 12:57:09 [default.go:66][I] Exist static file:  
+2016/05/18 12:57:09 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:57:09 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:57:09 [default.go:93][I] go create new 
+2016/05/18 12:57:09 [default.go:101][I] staticize: http://www.baidu.com/content-search.xml   ###   10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:57:09 [router.go:829][D] | GET        | /content-search.xml                      | 1.003395ms       | match      | /*                                       | 
+2016/05/18 12:57:16 [redis.go:40][I] Cache modify time is 2016-05-18 12:57:08 
+2016/05/18 12:57:16 [default.go:66][I] Exist static file:  
+2016/05/18 12:57:16 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 12:57:16 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 12:57:16 [router.go:829][D] | GET        | /                                        | 710.764µs        | match      | /*                                       | 
+2016/05/18 12:57:17 [redis.go:40][I] Cache modify time is 2016-05-18 12:57:09 
+2016/05/18 12:57:17 [default.go:66][I] Exist static file:  
+2016/05/18 12:57:17 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 12:57:17 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 12:57:17 [router.go:829][D] | GET        | /content-search.xml                      | 305.601µs        | match      | /*                                       | 
+2016/05/18 13:06:29 [asm_amd64.s:1696][I] http server Running on :3000
+2016/05/18 13:06:37 [text.go:30][I] Time sub is 10 
+2016/05/18 13:06:37 [text.go:31][I] File modify time is 2016-05-18 12:56:23 
+2016/05/18 13:06:37 [default.go:66][I] Exist static file:  
+2016/05/18 13:06:37 [default.go:67][I] 	url: http://www.baidu.com/ 
+2016/05/18 13:06:37 [default.go:68][I] 	md5: 6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 13:06:37 [default.go:84][I] go create new 
+2016/05/18 13:06:37 [default.go:101][I] staticize: http://www.baidu.com/   ###   6666cd76f96956469e7be39d750cc7d9 
+2016/05/18 13:06:37 [router.go:829][D] | GET        | /                                        | 2.120554ms       | match      | /*                                       | 
+2016/05/18 13:06:37 [text.go:58][I] 写入文件：/Users/steven/.mygo/src/page_static/static//6/6/6666cd76f96956469e7be39d750cc7d9.html    99952字节 
+2016/05/18 13:06:38 [text.go:30][I] Time sub is 10 
+2016/05/18 13:06:38 [text.go:31][I] File modify time is 2016-05-18 12:56:24 
+2016/05/18 13:06:38 [default.go:66][I] Exist static file:  
+2016/05/18 13:06:38 [default.go:67][I] 	url: http://www.baidu.com/content-search.xml 
+2016/05/18 13:06:38 [default.go:68][I] 	md5: 10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 13:06:38 [default.go:84][I] go create new 
+2016/05/18 13:06:38 [default.go:101][I] staticize: http://www.baidu.com/content-search.xml   ###   10ea08a4ea3b809d5b6a7509f01b5735 
+2016/05/18 13:06:38 [router.go:829][D] | GET        | /content-search.xml                      | 841.274µs        | match      | /*                                       | 
+2016/05/18 13:06:38 [text.go:58][I] 写入文件：/Users/steven/.mygo/src/page_static/static//1/0/10ea08a4ea3b809d5b6a7509f01b5735.html    302字节 

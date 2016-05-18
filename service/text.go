@@ -25,7 +25,10 @@ func GetHtmlText(cipherStr string) (html string, timeDifferencetime int64, abPat
 		}
 		fd, _ := ioutil.ReadAll(file)
 		html := string(fd)
-		timeDifference := (time.Now().Unix() - fileState.ModTime().Unix()) / 60
+		fileModifyTime := fileState.ModTime()
+		timeDifference := (time.Now().Unix() - fileModifyTime.Unix()) / 60
+		beego.Info("Time sub is " + strconv.Itoa(int((time.Now().Unix()-fileModifyTime.Unix())/60)))
+		beego.Info("File modify time is " + fileModifyTime.Format("2006-01-02 15:04:05"))
 		return html, timeDifference, abPath
 	} else {
 		errCreateDir := os.MkdirAll(abDir, 0755)

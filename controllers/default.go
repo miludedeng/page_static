@@ -62,13 +62,20 @@ func (c *MainController) Get() {
 			c.Ctx.WriteString(html)
 		}
 	}
+	if html != "" {
+		beego.Info("Exist static file: ")
+		beego.Info("\turl: " + fullUrl)
+		beego.Info("\tmd5: " + cipherStr)
+	}
 	/* 如果静态文件的存储日期没有超出设置时间，则直接返回，否则继续存储*/
+	beego.Info("\tTimeDifference:\t" + strconv.Itoa(int(timeDifference)))
+	beego.Info("\tExpDate:\t" + strconv.Itoa(int(expDateInt64)))
 	if html != "" && (timeDifference < expDateInt64 || util.ContainsBySlice(md5S, cipherStr)) {
 		return
 	}
 	/* 如果没有旧页面，并且已经有人访问过当前页面则阻止继续往下执行，并重复刷新访问者的浏览器 */
 	if !useOldPage && util.ContainsBySlice(md5S, cipherStr) {
-		c.Ctx.WriteString("<script>setTimeout('location.reload()',500)</script>")
+		c.Ctx.WriteString("<script>setTimeout('location.reload()',2000)</script>")
 		return
 	}
 	md5S = append(md5S, cipherStr)
