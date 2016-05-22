@@ -36,3 +36,6 @@
 
 *如果页面在开发或测试时，可以在浏览器的url后拼接
 `nocache=true`，该url则不会使用缓存
+
+####Docker方式启动示例：
+`docker  run -d --name pagestatic --link redis:redis -v /opt/page_static/conf:/usr/local/pagestatic/conf -v /opt/page_static/logs:/usr/local/pagestatic/logs -p 3000:3000 pagestatic`
