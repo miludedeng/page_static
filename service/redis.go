@@ -50,6 +50,9 @@ func GetHtmlAndSaveRedis(cipherStr, fullUrl string, concatCss bool) string {
 	} else {
 		html = GetHtml(fullUrl)
 	}
+	if html == "" {
+		return ""
+	}
 	conn.Do("SET", cipherStr, html)
 	conn.Do("SET", cipherStr+"_date", time.Now().Unix())
 	return html

@@ -46,6 +46,9 @@ func GetHtmlAndSaveText(abPath string, fullUrl string, concatCss bool) string {
 	} else {
 		html = GetHtml(fullUrl)
 	}
+	if html == "" {
+		return ""
+	}
 	os.Remove(abPath)
 	newFile, errCreateFile := os.Create(abPath)
 	if errCreateFile != nil {
