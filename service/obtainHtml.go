@@ -2,10 +2,11 @@ package service
 
 import (
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
 	"io/ioutil"
 	"net/http"
 	"regexp"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
 func GetHtml(fullUrl string) string {
@@ -15,8 +16,8 @@ func GetHtml(fullUrl string) string {
 		return ""
 	}
 	defer resp.Body.Close()
-	body, err2 := ioutil.ReadAll(resp.Body)
-	if err2 != nil {
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
 		fmt.Println("body parse error")
 		return ""
 	}

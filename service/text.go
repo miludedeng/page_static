@@ -17,11 +17,11 @@ func GetHtmlText(cipherStr string) (html string, timeDifferencetime int64, abPat
 	abPath = abDir + "/" + fileName
 
 	if IsExist(abPath) {
-		file, err1 := os.Open(abPath)
+		file, err := os.Open(abPath)
 		fileState, _ := os.Stat(abPath)
 		defer file.Close()
-		if err1 != nil {
-			panic(err1)
+		if err != nil {
+			panic(err)
 		}
 		fd, _ := ioutil.ReadAll(file)
 		html := string(fd)
