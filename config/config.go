@@ -9,7 +9,7 @@ type BasicT struct {
 	HttpPort   int
 	RunMode    string
 	AppDomain  string
-	MaxExpdate string
+	MaxExpdate int
 	ConcatCss  string
 	Storage    string
 }
@@ -37,9 +37,9 @@ func init() {
 	textMap, _ := beego.AppConfig.GetSection("text")
 	redisMap, _ := beego.AppConfig.GetSection("redis")
 	Basic.AppDomain = "123"
-	var httpPortErr error
-	Basic.HttpPort, httpPortErr = strconv.Atoi(basicMap["httpport"])
-	if httpPortErr != nil {
+	var err error
+	Basic.HttpPort, err = strconv.Atoi(basicMap["httpport"])
+	if err != nil {
 		Basic.HttpPort = 3000
 	}
 	Basic.RunMode = basicMap["runmode"]
@@ -47,7 +47,10 @@ func init() {
 		Basic.RunMode = "prod"
 	}
 	Basic.AppDomain = basicMap["app_domain"]
-	Basic.MaxExpdate = basicMap["max_expdate"]
+	Basic.MaxExpdate, err = strconv.Atoi(basicMap["max_expdate"])
+	if err != nil {
+		Basic.MaxExpdate = 2
+	}
 	Basic.ConcatCss = basicMap["concat_css"]
 	Basic.Storage = basicMap["storage"]
 	Text.StaticPath = textMap["static_path"]
