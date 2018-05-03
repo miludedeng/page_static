@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 )
 
 func init() {
@@ -82,8 +83,13 @@ func (c *MainController) Get() {
 		/* 如果页面没有静态页面则等待静态文件生成完成，并将http响应的页面返回给用户 */
 		if storage.isText {
 			if useOldPage {
-				beego.Info("go create new")
-				go service.GetHtmlAndSaveText(storage.abPath, fullUrl, config.Basic.ConcatCss == "on")
+				/* 夜间不更新页面 */
+				if isDaytime() {
+					beego.Info("go create new")
+					go service.GetHtmlAndSaveText(storage.abPath, fullUrl, config.Basic.ConcatCss == "on")
+				}else{
+					beego.Info("nighttime use cache only")	
+				}
 			} else {
 				beego.Info("create new")
 				bodyText := service.GetHtmlAndSaveText(storage.abPath, fullUrl, config.Basic.ConcatCss == "on")
@@ -123,4 +129,11 @@ func cacheRemove(val string) {
 	cache.Lock()
 	*cache.buffer = util.RemoveFromSlice(*cache.buffer, val)
 	cache.Unlock()
+}
+
+func isDaytime() (result bool){
+	now := time.Now()
+	start, _ := time.Parse("2006-01-02 15:04:05", now.Format("2006-01-02") + " " + " 08:00:00")
+	end, _ := time.Parse("2006-01-02 15:04:05", now.Format("2006-01-02") + " " + " 20:00:00")
+	return now.After(start) && now.Before(end)
 }
